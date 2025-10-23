@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import UploadCard from "./components/UploadCard";
+import ResultCard from "./components/ResultCard";
+import "./App.css";
 
 function App() {
+  const [parsedData, setParsedData] = useState(null);
+  const [fileURL, setFileURL] = useState(null); 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className={`left-panel ${fileURL ? "has-pdf" : ""}`}>
+        <UploadCard setParsedData={setParsedData} setFileURL={setFileURL} />
+      </div>
+
+      <div className="right-panel">
+        {parsedData ? (
+          <ResultCard data={parsedData} />
+        ) : (
+          <div className="placeholder">
+            <p>Your parsed details will appear here after parsing.</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
