@@ -6,7 +6,7 @@ export const parseCard = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
 
-  const res = await axios.post(`${BACKEND_URL}/upload/`, formData, {
+  const res = await axios.post(`${BACKEND_URL}`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
 
