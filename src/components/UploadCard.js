@@ -23,7 +23,7 @@ const UploadCard = ({ setParsedData }) => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/upload/", {
+      const response = await fetch("https://creditcard-parser-backend.onrender.com/upload/", {
         method: "POST",
         body: formData,
       });
